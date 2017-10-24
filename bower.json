@@ -1,0 +1,22 @@
+{
+  "name": "angular-scaffolding",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Luciano Oliveira"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "materialize": "^0.100.2",
+    "moment": "^2.19.1"
+  }
+}
