@@ -5,28 +5,32 @@ import { Component } from '@angular/core';
   template: `
   <h1>local zoo</h1>
   <div class="container">
-   <div class="animals">
-     <div class="title">
-       <span>species:</span>
-       <span>name</span>
-       <span>Age:</span>
-       <span>Diet:</span>
-       <span>Location</span>
-       <span>Caretakers:</span>
-       <span>Sex:</span>
-       <span>Likes:</span>
-       <span>Dislikes:</span>
-     </div>
-     <div *ngFor="let currentAnimal of animals">
-       <span>{{species}}</span>
-       <span>{{name}}</span>
-       <span>{{age}}</span>
-       <span>{{diet}}</span>
-       <span>{{location}}</span>
-       <span>{{caretakers}}</span>
-       <span>{{sex:}}</span>
-       <span>{{likes}}</span>
-       <span>{{dislikes}}</span>
+    <div class="animals">
+      <div class="title">
+        <span>species:</span>
+        <span>name</span>
+        <span>Age:</span>
+        <span>Diet:</span>
+        <span>Location</span>
+        <span>Caretakers:</span>
+        <span>Sex:</span>
+        <span>Likes:</span>
+        <span>Dislikes:</span>
+      </div>
+      <div *ngFor="let currentAnimal of animals">
+        <span>{{currentAnimal.species}}</span>
+        <span>{{currentAnimal.name}}</span>
+        <span>{{currentAnimal.age}}</span>
+        <span>{{currentAnimal.diet}}</span>
+        <span>{{currentAnimal.location}}</span>
+        <span>{{currentAnimal.caretakers}}</span>
+        <span>{{currentAnimal.sex:}}</span>
+        <span>{{currentAnimal.ikes}}</span>
+        <span>{{currentAnimal.dislikes}}</span>
+        <button (click)="editAnimal(currentAnimal)">Edit!</button>
+        <button (click)="likeAnimal(currentAnimal)">like!</button>
+        <button (click)="dislikeAnimal(currentAnimal)">Dislike!</button>
+      </div>
     </div>
   </div>
   `
