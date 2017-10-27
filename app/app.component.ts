@@ -57,6 +57,9 @@ export class AppComponent {
   likeAnimal(clickedAnimal: Animal){
     return clickedAnimal.likes +=1
   }
+}
 
-
+export class Animal{
+  constructor(public species: string, public name: string, public age: number, public diet: string, public location: string, public caretakers: number, public sex: string, public likes: number){
+  }
 }
