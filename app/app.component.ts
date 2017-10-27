@@ -25,8 +25,7 @@ import { Component } from '@angular/core';
         <span>{{currentAnimal.location}}</span>
         <span>{{currentAnimal.caretakers}}</span>
         <span>{{currentAnimal.sex:}}</span>
-        <span>{{currentAnimal.ikes}}</span>
-        <span>{{currentAnimal.dislikes}}</span>
+        <span>{{currentAnimal.likes}}</span>
         <button (click)="editAnimal(currentAnimal)">Edit!</button>
         <button (click)="likeAnimal(currentAnimal)">like!</button>
         <button (click)="dislikeAnimal(currentAnimal)">Dislike!</button>
@@ -45,8 +44,19 @@ export class AppComponent {
 
   ];
 
+  selectedAnimal: Animal = this.animals[0];
 
+  editAnimal(clickedAnimal){
+    this.selectedAnimal = clickedAnimal;
+  }
 
+  dislikeAnimal(clickedAnimal: Animal){
+    return clickedAnimal.likes -=1
+  }
+
+  likeAnimal(clickedAnimal: Animal){
+    return clickedAnimal.likes +=1
+  }
 
 
 }
