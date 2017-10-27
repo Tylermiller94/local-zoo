@@ -15,7 +15,6 @@ import { Component } from '@angular/core';
         <span>Caretakers:</span>
         <span>Sex:</span>
         <span>Likes:</span>
-        <span>Dislikes:</span>
       </div>
       <div *ngFor="let currentAnimal of animals">
         <span>{{currentAnimal.species}}</span>
@@ -30,6 +29,25 @@ import { Component } from '@angular/core';
         <button (click)="likeAnimal(currentAnimal)">like!</button>
         <button (click)="dislikeAnimal(currentAnimal)">Dislike!</button>
       </div>
+    </div>
+    <div>
+      <h3>{{selectedanimal.species}}</h3>
+      <h3>Edit Animal</h3>
+      <label>name</label>
+      <input [(ngModel)]="selectedAnimal.name">
+      <br>
+      <label>enter age:</label>
+      <input [(ngModel)]="selectedAnimal.age">
+      <label>enter diet:</label>
+      <input [(ngModel)]="selectedAnimal.diet">
+      <label>enter location</label>
+      <input [(ngModel)]="selectedAnimal.location">
+      <label>enter caretakers:</label>
+      <input [(ngModel)]="selectedAnimal.caretakers">
+      <label>enter sex:</label>
+      <input [(ngModel)]="selectedAnimal.sex">
+      <label>enter likes:</label>
+      <input [(ngModel)]="selectedAnimal.likes">
     </div>
   </div>
   `
