@@ -37,4 +37,8 @@ export class AnimalListComponent {
    editAnimal(AnimalToEdit: Animal) {
      this.clickSender.emit(AnimalToEdit);
    }
+
+   onChange(optionFromMenu) {
+    this.filterByAnimalAge = optionFromMenu;
+  }
 }
