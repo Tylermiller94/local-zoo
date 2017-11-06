@@ -1,83 +1,44 @@
 import { Component } from '@angular/core';
+import { Animal } from './animal.model'
 
 @Component({
   selector: 'app-root',
   template: `
-  <h1>local zoo</h1>
   <div class="container">
-    <div class="animals">
-      <div class="title">
-        <span>species:</span>
-        <span>name</span>
-        <span>Age:</span>
-        <span>Diet:</span>
-        <span>Location</span>
-        <span>Caretakers:</span>
-        <span>Sex:</span>
-        <span>Likes:</span>
-      </div>
-      <div *ngFor="let currentAnimal of animals">
-        <span>{{currentAnimal.species}}</span>
-        <span>{{currentAnimal.name}}</span>
-        <span>{{currentAnimal.age}}</span>
-        <span>{{currentAnimal.diet}}</span>
-        <span>{{currentAnimal.location}}</span>
-        <span>{{currentAnimal.caretakers}}</span>
-        <span>{{currentAnimal.sex:}}</span>
-        <span>{{currentAnimal.likes}}</span>
-        <button (click)="editAnimal(currentAnimal)">Edit!</button>
-        <button (click)="likeAnimal(currentAnimal)">like!</button>
-        <button (click)="dislikeAnimal(currentAnimal)">Dislike!</button>
-      </div>
-    </div>
-    <div>
-      <h3>{{selectedanimal.species}}</h3>
-      <h3>Edit Animal</h3>
-      <label>name</label>
-      <input [(ngModel)]="selectedAnimal.name">
-      <br>
-      <label>enter age:</label>
-      <input [(ngModel)]="selectedAnimal.age">
-      <label>enter diet:</label>
-      <input [(ngModel)]="selectedAnimal.diet">
-      <label>enter location</label>
-      <input [(ngModel)]="selectedAnimal.location">
-      <label>enter caretakers:</label>
-      <input [(ngModel)]="selectedAnimal.caretakers">
-      <label>enter sex:</label>
-      <input [(ngModel)]="selectedAnimal.sex">
-      <label>enter likes:</label>
-      <input [(ngModel)]="selectedAnimal.likes">
-    </div>
+    <h1>Animal Info Tracker</h1>
+    <animal-list [childAnimalList]="masterAnimalList" (clickSender)="editAnimal($event)"></animal-list>
+    <hr>
+    <edit-animal [childSelectedAnimal]="selectedAnimal" (doneButtonClickedSender)="finishedEditing()"></edit-animal>
+    <new-animal (newAnimalSender)="addAnimal($event)"></new-animal>
   </div>
   `
 })
 
 export class AppComponent {
-  zooName: string = "Local Zoo";
-  animals: Animal[] = [
-    new Animal("Arctic Fox", "Moon", 2, "Carnivore", "Northern Trail", 5, "Female", "Cool sahde", "Loud Noises" ),
-    new Animal("Ocelot", "Prince", 4, "Carnivore", "Tropical Rain Forest Building", 6, "Male", "Lying in the sunshine", "Toys that are not rope-based"),
-    new Animal("Northwest Black Tailed Deer", "Tinkerbell", 8, "Herbivore", "Northern Trail", 2, "Female", "Delicate roots and leaves", "Loud Noises"),
+  selectedAnimal = null;
+ masterAnimalList: Animal[] = [
+   new Animal('Arctic Fox', 'Moon', 2, 'Carnivore', 'Northern Trail', 5, 'Female', 'Cool shade', 'Loud noises'),
+   new Animal('Ocelot', 'Prince', 4, 'Carnivore', 'Tropical Rainforest Building', 6, 'Male', 'Laying in the sunshine', 'Toys that are not rope-based'),
+   new Animal('Northwest Black Tailed Deer', 'Tinkerbell', 8, 'Herbivore', 'Northern Trail', 2, 'Female', 'Delicate roots and leaves', 'Loud noises')
+ ];
 
-  ];
+ editAnimal(clickedAnimal) {
+   this.selectedAnimal = clickedAnimal;
+ }
 
-  selectedAnimal: Animal = this.animals[0];
+ finishedEditing() {
+   this.selectedAnimal = null;
+ }
 
-  editAnimal(clickedAnimal){
-    this.selectedAnimal = clickedAnimal;
-  }
-
-  dislikeAnimal(clickedAnimal: Animal){
-    return clickedAnimal.likes -=1
-  }
-
-  likeAnimal(clickedAnimal: Animal){
-    return clickedAnimal.likes +=1
-  }
+ addAnimal(newAnimalFromChild: Animal) {
+   this.masterAnimalList.push(newAnimalFromChild);
+ }
 }
-
-export class Animal{
-  constructor(public species: string, public name: string, public age: number, public diet: string, public location: string, public caretakers: number, public sex: string, public likes: number){
-  }
-}
+//   dislikeAnimal(clickedAnimal: Animal){
+//     return clickedAnimal.likes -=1
+//   }
+//
+//   likeAnimal(clickedAnimal: Animal){
+//     return clickedAnimal.likes +=1
+//   }
+// }
